@@ -8,6 +8,9 @@ __pycache__/
 
 # Distribution / packaging
 .Python
+yolo_venv/
+data_images/
+yolov5/
 build/
 develop-eggs/
 dist/

@@ -9,6 +9,7 @@ from yaml.loader import SafeLoader
 from src.exception import ObjectDetectionException
 import pytesseract as pt
 from PIL import Image
+import easyocr
 
 
 
@@ -89,6 +90,7 @@ class YOLO_Pred():
 
             #NMS
             index = cv2.dnn.NMSBoxes(bboxes=boxes_np, scores=confidences_np, score_threshold=0.25, nms_threshold=0.45)
+            index = np.array(index)
             index = index.flatten()  # Flatten the numpy array
 
             # Step4
@@ -112,18 +114,23 @@ class YOLO_Pred():
         # extracting text
         def extract_text(self,image,bbox):
             #from PIL import Image
-            import pytesseract
+            #import pytesseract
             # If you don't have tesseract executable in your PATH, include the following:
             #pytesseract.pytesseract.tesseract_cmd = r'D:/DS from PC/pc-20230117T113640Z-001/pc/Projects/Automatic-number-plate-detection/yolo_venv/Tesseract-OCR'
+            
             x,y,w,h = bbox
             roi = image[y:y+h, x:x+w]
+            roi_gray = cv2.cvtColor(roi, cv2.COLOR_BGR2GRAY)
+
+            _, roi_thresh = cv2.threshold(roi_gray, 64, 255, cv2.THRESH_BINARY_INV)
+            reader = easyocr.Reader(['en'], gpu=False)
+            output = reader.readtext(roi_thresh)
+            # output -[(BBox, text, confidence score)]
             
-            if 0 in roi.shape:
-                return ''
-            
-            else:
-                text = pt.image_to_string(roi)
-                text = text.strip()
+            for out in output:
+                text_bbox, text, text_score = out
+                if text_score > 0.4:
+                    return text
                 
             return text
             

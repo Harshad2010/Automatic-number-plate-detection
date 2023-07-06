@@ -8,6 +8,9 @@ import yaml
 from yaml.loader import SafeLoader
 from src.exception import ObjectDetectionException
 import pytesseract as pt
+from PIL import Image
+
+
 
 class YOLO_Pred():
     try :
@@ -86,7 +89,6 @@ class YOLO_Pred():
 
             #NMS
             index = cv2.dnn.NMSBoxes(bboxes=boxes_np, scores=confidences_np, score_threshold=0.25, nms_threshold=0.45)
-            index = np.array(index)  # Convert the tuple to a numpy array
             index = index.flatten()  # Flatten the numpy array
 
             # Step4
@@ -105,9 +107,14 @@ class YOLO_Pred():
                 cv2.putText(image, conf_text,(x,y-10), cv2.FONT_HERSHEY_PLAIN, 0.7,(255,255,255),1) 
                 cv2.putText(image,license_text,(x,y+h+27),cv2.FONT_HERSHEY_SIMPLEX,0.7,(0,255,0),1)
                 
-            return image
+            return image, boxes_np, index
         
+        # extracting text
         def extract_text(self,image,bbox):
+            #from PIL import Image
+            import pytesseract
+            # If you don't have tesseract executable in your PATH, include the following:
+            #pytesseract.pytesseract.tesseract_cmd = r'D:/DS from PC/pc-20230117T113640Z-001/pc/Projects/Automatic-number-plate-detection/yolo_venv/Tesseract-OCR'
             x,y,w,h = bbox
             roi = image[y:y+h, x:x+w]
             

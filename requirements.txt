@@ -3,6 +3,7 @@ labelImg
 from-root==1.0.2
 DateTime==4.4
 streamlit
+pillow
 pytesseract
 
 # YOLOv5 requirements

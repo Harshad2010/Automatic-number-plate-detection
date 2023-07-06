@@ -62,7 +62,7 @@ def main():
                     # obj to array
                     image_array = np.array(image_obj)
                     pred_img = yolo.predictions(image_array)
-                    pred_img_obj = Image.fromarray(pred_img)
+                    pred_img_obj = Image.fromarray(pred_img[0])
                     prediction = True
                 
         if prediction:

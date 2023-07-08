@@ -69,7 +69,7 @@ class YOLO_Pred():
                     class_score = row[5] #maximum probability from 20 objects
 
                     
-                    if class_score>0.25 : #class_score should be greater than threshold then only enter the if sttaement
+                    if class_score>0.25 : #class_score should be greater than threshold then only enter the if statement
                         cx, cy, w, h = row[0:4] # fetch the bounding box for this conditional probability of classs score
                         # construct bounding box from four values
                         # left,  top, width, and height
@@ -100,16 +100,16 @@ class YOLO_Pred():
                 x,y,w,h = boxes_np[ind]
                 bb_conf = int(confidences_np[ind]*100)
                 conf_text = 'plate: {:.0f}%'.format(bb_conf*100)
-                license_text = self.extract_text(image,boxes_np[ind])
+                license_text_bbox, text,roi_thresh = self.extract_text(image,boxes_np[ind])
                 
                 cv2.rectangle(image,(x,y),(x+w,y+h),(255,0,255),2)
                 cv2.rectangle(image,(x,y-30),(x+w,y),(255,0,255),-1) 
                 cv2.rectangle(image,(x,y+h),(x+w,y+h+30),(0,0,0),-1)
 
                 cv2.putText(image, conf_text,(x,y-10), cv2.FONT_HERSHEY_PLAIN, 0.7,(255,255,255),1) 
-                cv2.putText(image,license_text,(x,y+h+27),cv2.FONT_HERSHEY_SIMPLEX,0.7,(0,255,0),1)
+                cv2.putText(image,text,(x,y+h+27),cv2.FONT_HERSHEY_SIMPLEX,0.7,(0,255,0),1)
                 
-            return image, boxes_np, index
+            return image, boxes_np, index, license_text_bbox, text, roi_thresh
         
         # extracting text
         def extract_text(self,image,bbox):
@@ -130,9 +130,9 @@ class YOLO_Pred():
             for out in output:
                 text_bbox, text, text_score = out
                 if text_score > 0.4:
-                    return text
+                    return text_bbox, text, roi_thresh 
                 
-            return text
+            return text_bbox, text, roi_thresh 
             
     except Exception as e:
         raise ObjectDetectionException(e,sys)

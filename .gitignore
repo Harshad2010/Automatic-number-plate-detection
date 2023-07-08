@@ -10,6 +10,7 @@ __pycache__/
 .Python
 yolo_venv/
 data_images/
+miscellaneous/
 yolov5/
 build/
 develop-eggs/

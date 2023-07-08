@@ -7,6 +7,7 @@ pillow
 pytesseract
 easyocr==1.6.2
 
+
 # YOLOv5 requirements
 # Usage: pip install -r requirements.txt
 

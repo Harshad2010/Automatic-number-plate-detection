@@ -27,7 +27,6 @@ class DataPreprocess :
             # read xml files
             # from each xml file we need to extract
             # filename, size(width, height), object(name, xmin, xmax, ymin, ymax)
-            
             def xml_to_csv():   
                 path = glob('./images/*.xml')
                 labels_dict = dict(filepath=[],xmin=[],xmax=[],ymin=[],ymax=[])

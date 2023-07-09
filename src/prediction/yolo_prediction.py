@@ -98,12 +98,12 @@ class YOLO_Pred():
                 #conf_text = 'plate: {:.0f}%'.format(bb_conf*100)
                 license_text_bbox, text,roi_thresh = self.extract_text(image,boxes_np[ind]) #OCR
                 
-                cv2.rectangle(image,(x,y),(x+w,y+h),(255,0,255),2)
+                cv2.rectangle(image,(x,y),(x+w,y+h),(255,0,255),8)
                 #cv2.rectangle(image,(x,y-30),(x+w,y),(255,0,255),-1) 
-                cv2.rectangle(image,(x,y+h),(x+w,y+h+30),(0,0,0),-1)
+                #cv2.rectangle(image,(x,y+h),(x+w,y+h+20),(0,0,0),-1)
 
                 #cv2.putText(image, conf_text,(x,y-10), cv2.FONT_HERSHEY_PLAIN, 0.7,(255,255,255),1) 
-                cv2.putText(image,text,(x,y+h+27),cv2.FONT_HERSHEY_SIMPLEX,0.7,(0,255,0),1)
+                cv2.putText(image,text,(x,y+h+27),cv2.FONT_HERSHEY_SIMPLEX,0.7,(0,255,0),2)
                 
             return image, boxes_np, index, license_text_bbox, text, roi_thresh
         

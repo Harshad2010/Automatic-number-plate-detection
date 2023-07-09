@@ -6,8 +6,9 @@ This repository provides an implementation of License Plate Detection and Text E
 ## Features
 - Detects license plates in images using YOLO object detection algorithm.
 - Extracts alphanumeric characters from license plates using OCR - easyocr.
+- Replaces car number plate by the Brand logo as given.
 - Works with jpg and png image format in this application.
-- Easy to integrate into your projects
+
 
 ## Instructions to run the Project:
 

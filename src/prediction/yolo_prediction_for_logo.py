@@ -13,7 +13,7 @@ from src.exception import ObjectDetectionException
 
 
 # Creating object detection class
-class YOLO_Pred():
+class YOLO_Pred1():
     try :
         def __init__(self, onnx_model, data_yaml):
             # Load the YAML
@@ -89,48 +89,25 @@ class YOLO_Pred():
             index = cv2.dnn.NMSBoxes(bboxes=boxes_np, scores=confidences_np, score_threshold=0.25, nms_threshold=0.45)
             index = np.array(index)
             index = index.flatten()  
-
+    
+            return image, boxes_np, index
+        
+        def draw_rectangle_for_logo_replacement(self,image2):
+            
+            boxes_np = self.predictions(image2)[1]
+            indexes= self.predictions(image2)[2] 
             # Step4
             # Draw the bounding box.
-            for ind in index:
+            for ind in indexes:
                 # extract bounding box after NMS operation.
                 x,y,w,h = boxes_np[ind]
-                bb_conf = int(confidences_np[ind]*100)
-                #conf_text = 'plate: {:.0f}%'.format(bb_conf*100)
-                license_text_bbox, text,roi_thresh = self.extract_text(image,boxes_np[ind]) #OCR
                 
-                cv2.rectangle(image,(x,y),(x+w,y+h),(255,0,255),2)
-                #cv2.rectangle(image,(x,y-30),(x+w,y),(255,0,255),-1) 
-                cv2.rectangle(image,(x,y+h),(x+w,y+h+30),(0,0,0),-1)
-
-                #cv2.putText(image, conf_text,(x,y-10), cv2.FONT_HERSHEY_PLAIN, 0.7,(255,255,255),1) 
-                cv2.putText(image,text,(x,y+h+27),cv2.FONT_HERSHEY_SIMPLEX,0.7,(0,255,0),1)
+                cv2.rectangle(image2,(x,y),(x+w,y+h),(255,0,255),2)
                 
-            return image, boxes_np, index, license_text_bbox, text, roi_thresh
-        
-        # extracting text
-        def extract_text(self,image,bbox):
-            # Get roi from bounding box
-            # Convert image to grayscale and then use image thresholding for proper text extraction.
-            x,y,w,h = bbox
-            roi = image[y:y+h, x:x+w]
-            roi_gray = cv2.cvtColor(roi, cv2.COLOR_BGR2GRAY)
-            _, roi_thresh = cv2.threshold(roi_gray, 64, 255, cv2.THRESH_BINARY_INV)
+                return image2, boxes_np  
             
-            reader = easyocr.Reader(['en'], gpu=False)
-            output = reader.readtext(roi_thresh)
-            # output -[(BBox, text, confidence score)]
             
-            for out in output:
-                text_bbox, text, text_score = out
-                if text_score > 0.4:
-                    return text_bbox, text, roi_thresh 
-                
-            return text_bbox, text, roi_thresh 
-        
-        
             
-                    
     except Exception as e:
         raise ObjectDetectionException(e,sys)
             

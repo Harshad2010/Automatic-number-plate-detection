@@ -1,5 +1,5 @@
 import streamlit as st
-from src.prediction.yolo_prediction import YOLO_Pred
+from src.prediction.yolo_prediction_for_logo import YOLO_Pred1  
 from src.prediction.logo_replacement import LogoReplacement
 from PIL import Image
 import numpy as np
@@ -14,7 +14,7 @@ st.header('Replace License plate by Logo')
 st.write('Please Upload Image to get logo')
 
 with st.spinner('Please wait while your model is loading'):
-    yolo = YOLO_Pred(onnx_model='src/model_training/yolov5/runs/train/Model2/weights/best.onnx',
+    yolo = YOLO_Pred1(onnx_model='src/model_training/yolov5/runs/train/Model2/weights/best.onnx',
                     data_yaml='src/model_training/yolov5/data.yaml')
     logo = LogoReplacement()
     #st.balloons()

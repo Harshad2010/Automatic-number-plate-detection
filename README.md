@@ -29,8 +29,8 @@ pip install -r requirements.txt
 6. In src all the pipeline is created - data preparation, model training and prediction. I've integrated these pipeline with web app.
 
 7. Web app consist of two pages.
-   Page 1 - License plate detection and text generation using OCR.
-   Page 2 - Replacing license plate with brand logo as given
+   - Page 1 - License plate detection and text generation using OCR.
+   - Page 2 - Replacing license plate with brand logo as given
 
 8. Model is deployed using streamlit. Run "streamlit run app.py" command.
 

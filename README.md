@@ -10,6 +10,9 @@ This project is focused on detecting license plate in images computer vision tec
 git clone 
 ```
 2. Create new enviroment with python==3.8 and activate the environment.
+```
+conda create -p env_name python==3.8 -y
+```
 
 3. run command
 ```
@@ -17,6 +20,7 @@ python setup.py install
 ```
 4. Install the required libraries mentioned in the requirements.txt file. (Make sure you're inside the environment)
 ``` 
+conda activate env_name/
 pip install -r requirements.txt
 ```
 5. Download the pretrained weight file (ONNX format) and data.yaml file from model training folder.
@@ -30,9 +34,9 @@ pip install -r requirements.txt
 
 8. Model is deployed using streamlit. Run "streamlit run app.py" command.
 
-9. In web appplication, for Page1 - upload image and get detection and text generation.
+9. In web appplication, for Page1 - upload image from test image folder and get detection and text generation.
 
-10. In web appplication, for Page2 - upload car and logo image to replace license plate by logo.
+10. In web appplication, for Page2 - upload car and logo image from test image folder to replace license plate by logo.
 
 
 ## Demo Video:

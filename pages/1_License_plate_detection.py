@@ -13,8 +13,8 @@ st.header('Get License Plate Detection for Input Image')
 st.write('Please Upload Image to get detections')
 
 with st.spinner('Please wait while your model is loading'):
-    yolo = YOLO_Pred(onnx_model='src/model_training/yolov5/runs/train/Model2/weights/best.onnx',
-                    data_yaml='src/model_training/yolov5/data.yaml')
+    yolo = YOLO_Pred(onnx_model='src/model_training/best.onnx',
+                        data_yaml='src/model_training/data.yaml')
     #st.balloons()
 
 def upload_image():

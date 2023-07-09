@@ -58,7 +58,7 @@ Please note - Streamlit accepts only jpg and png image format.
 
 ## Below are some results:
 
-<img scr = "https://github.com/Harshad2010/Automatic-number-plate-detection/blob/main/detected%20images/4.jpg", alt="MLBC">
+<img src = "https://github.com/Harshad2010/Automatic-number-plate-detection/blob/main/detected%20images/4.jpg" alt="MLBC">
 
 <img scr = "https://github.com/Harshad2010/Automatic-number-plate-detection/blob/main/detected%20images/4.1.jpg"
 

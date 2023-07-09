@@ -60,9 +60,9 @@ Please note - Streamlit accepts only jpg and png image format.
 
 <img src = "https://github.com/Harshad2010/Automatic-number-plate-detection/blob/main/detected%20images/4.jpg" alt="MLBC">
 
-<img scr = "https://github.com/Harshad2010/Automatic-number-plate-detection/blob/main/detected%20images/4.1.jpg"
+<img src = "https://github.com/Harshad2010/Automatic-number-plate-detection/blob/main/detected%20images/4.1.jpg" alt="MLBC">
 
-<img scr = "https://github.com/Harshad2010/Automatic-number-plate-detection/blob/main/detected%20images/6.jpg"
+<img src = "https://github.com/Harshad2010/Automatic-number-plate-detection/blob/main/detected%20images/6.jpg" alt="MLBC">
 
-<img scr = "https://github.com/Harshad2010/Automatic-number-plate-detection/blob/main/detected%20images/6.1.jpg"
+<img src = "https://github.com/Harshad2010/Automatic-number-plate-detection/blob/main/detected%20images/6.1.jpg" alt="MLBC">
 

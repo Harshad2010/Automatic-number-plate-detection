@@ -7,7 +7,6 @@ import numpy as np
 import cv2
 from PIL import Image
 import easyocr
-import pytesseract as pt
 from yaml.loader import SafeLoader
 from src.exception import ObjectDetectionException
 

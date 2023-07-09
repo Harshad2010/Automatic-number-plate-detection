@@ -1,7 +1,6 @@
 ## Importing libraries
 import cv2
 import sys
-import matplotlib.pyplot as plt
 from src.prediction.yolo_prediction_for_logo import YOLO_Pred1
 from src.exception import ObjectDetectionException
 
@@ -20,8 +19,8 @@ class LogoReplacement():
             logo_height, logo_width= self.logo_img.shape[:2]
 
             ## Creating instance of YOLO_Pred class
-            yolo = YOLO_Pred1(onnx_model='src/model_training/yolov5/runs/train/Model2/weights/best.onnx',
-                                data_yaml='src/model_training/yolov5/data.yaml')
+            yolo = YOLO_Pred1(onnx_model='src/model_training/best.onnx',
+                                data_yaml='src/model_training/data.yaml')
 
             ## Predicting bbox from YOLO
             img_pred = yolo.predictions(self.img_cv)

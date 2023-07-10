@@ -28,7 +28,7 @@ class YOLO_Pred1():
             self.yolo.setPreferableTarget(cv2.dnn.DNN_TARGET_CPU)
         
         def predictions(self,image):
-
+            """Returns predictions/detections from the Object detection algorithm"""
             row, column, d = image.shape
             ## Step1 : Convert image into yolo format.
             max_rc = max(row,column)

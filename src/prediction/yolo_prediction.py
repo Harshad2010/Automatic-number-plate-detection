@@ -28,7 +28,8 @@ class YOLO_Pred():
             self.yolo.setPreferableTarget(cv2.dnn.DNN_TARGET_CPU)
         
         def predictions(self,image):
-
+            """Returns predictions/detections from the Object detection algorithm"""
+            
             row, column, d = image.shape
             ## Step1 : Convert image into yolo format.
             max_rc = max(row,column)
@@ -109,6 +110,10 @@ class YOLO_Pred():
         
         # extracting text
         def extract_text(self,image,bbox):
+            """ Function takes image and bbox as an argument and extracts the text from detected region
+                Exraction of text is done by OCR techniques using easyocr
+            """
+            
             # Get roi from bounding box
             # Convert image to grayscale and then use image thresholding for proper text extraction.
             x,y,w,h = bbox
@@ -127,9 +132,7 @@ class YOLO_Pred():
                 
             return text_bbox, text, roi_thresh 
         
-        
-            
-                    
+                        
     except Exception as e:
         raise ObjectDetectionException(e,sys)
             

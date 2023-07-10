@@ -1,4 +1,4 @@
-# Automatic-number-plate-detection
+# Automatic-number-plate-detection 
 
 ## Introduction:
 This repository provides an implementation of License Plate Detection and Text Extraction using Optical Character Recognition (OCR) techniques. The goal of this project is to detect license plates in images and extract the alphanumeric characters from the detected plates. The second part of the project is to replace license plate by brand logo.
@@ -8,7 +8,6 @@ This repository provides an implementation of License Plate Detection and Text E
 - Extracts alphanumeric characters from license plates using OCR - easyocr.
 - Replaces car number plate by the Brand logo as given.
 - Works with jpg and png image format in this application.
-
 
 ## Instructions to run the Project:
 

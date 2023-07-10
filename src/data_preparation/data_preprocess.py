@@ -1,14 +1,14 @@
+import cv2
+import os
+import sys
 import numpy as np
 import pandas as pd
 from glob import glob
 import xml.etree.ElementTree as xet #based upon xml read an image or get the filename
-import cv2
-import os
 from shutil import copy
 from shutil import move
 import warnings
 warnings.filterwarnings("ignore")
-import sys
 from src.exception import ObjectDetectionException
 from src.logger import logging
 
@@ -17,17 +17,14 @@ class DataPreprocess :
         pass
     
     def preprocess():
-        "Preprocesses all data - convert files from XML to text format"
-        try:
-            # get path of each xml file.
-            xmlfiles = glob("src/data_images/*.xml")
-            # replace double backward slash(\\) with forward slash(/)
-            xmlfiles = [i.replace("\\","/") for i in xmlfiles]
-            
+        "Preprocesses the data "
+        try:           
             # read xml files
             # from each xml file we need to extract
             # filename, size(width, height), object(name, xmin, xmax, ymin, ymax)
-            def xml_to_csv():   
+            def xml_to_csv():
+                """For converting XML file to CSV format """   
+                
                 path = glob('./images/*.xml')
                 labels_dict = dict(filepath=[],xmin=[],xmax=[],ymin=[],ymax=[])
                 for filename in path:
@@ -67,7 +64,7 @@ class DataPreprocess :
             def save_data(folder_name, df):
                 values = df[['filename','center_x','center_y','bb_width','bb_height']].values
                 for fname, x,y, w, h in values:
-                    image_name = os.path.split(fname)[-1]                #filename= "./images/N1.jpeg"
+                    image_name = os.path.split(fname)[-1]  #filename= "./images/N1.jpeg"
                     txt_name = os.path.splitext(image_name)[0]
                     
                     dst_image_path = os.path.join(folder_name,image_name) #image_name=N1.jpeg

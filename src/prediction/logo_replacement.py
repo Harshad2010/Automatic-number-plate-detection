@@ -11,6 +11,7 @@ class LogoReplacement():
             pass
 
         def replace_logo(self,image, logo_image):
+            "This method replaces license plate bounding box by brand logo"
             
             ## Reading the image
             self.img_cv= image

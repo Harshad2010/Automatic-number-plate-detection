@@ -58,7 +58,7 @@ Please note - Streamlit accepts only jpg and png image format.
 
 ## Refrence video to guide for web application:
 
-[![video](https://github.com/Harshad2010/Automatic-number-plate-detection/blob/main/detected%20images/License%20plate.mp4)
+https://github.com/Harshad2010/Automatic-number-plate-detection/assets/114814951/66d2db1b-7582-44b7-802c-61ea0b4d3395
 
 ## Below are some results:
 
